@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:nfc_manager/nfc_manager.dart';
+import 'package:geolocator/geolocator.dart';
 
 import 'dart:convert' show utf8;
 
@@ -19,12 +20,50 @@ class _DashboardState extends State<Dashboard> {
   bool listenerRunning = false;
   bool writeCounterOnNextContact = false;
   TextEditingController myController = TextEditingController();
+  Position? _currentPosition;
 
   @override
   void initState() {
     super.initState();
     Future.delayed(Duration.zero, () async {
       isNfcAvalible = await NfcManager.instance.isAvailable();
+    });
+  }
+
+  _getCurrentLocation() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      // Location services are not enabled don't continue
+      // accessing the position and request users of the
+      // App to enable the location services.
+      return Future.error('Location services are disabled.');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      // Permissions are denied forever, handle appropriately.
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+
+    Geolocator
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.best, forceAndroidLocationManager: true)
+        .then((Position position) {
+      setState(() {
+        _currentPosition = position;
+      });
+    }).catchError((e) {
+      print(e);
     });
   }
 
@@ -64,7 +103,7 @@ class _DashboardState extends State<Dashboard> {
                 //Any existing content will be overwritten
                 await ndefTag.write(ndefMessage);
                 _alert('Data written to the tag successfully');
-                myController.text = "";
+                // myController.text = "";
                 succses = true;
               } catch (e) {
                 _alert("Writing failed, press 'Write to tag' again");
@@ -176,21 +215,36 @@ class _DashboardState extends State<Dashboard> {
                   textAlign: TextAlign.start,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: TextField(
-                  keyboardType: TextInputType.name,
-                  decoration: InputDecoration(labelText: 'Enter data in NFC'),
-                  controller: myController,
-                  onEditingComplete: () {
-                    _writeNfcTag();
-                    FocusManager.instance.primaryFocus?.unfocus();
-                  },
+              TextButton(
+                child: Text("Get location"),
+                onPressed: () async {
+                await _getCurrentLocation();
+                myController.text = "LAT: 19.175263, LNG: 72.9458786";
+                _writeNfcTag();
+                },
+              ),
+              if (_currentPosition != null) const Padding(
+                padding: EdgeInsets.fromLTRB(70.0, 0.0, 0.0, 0.0),
+                child: Text(
+                    // "LAT: ${_currentPosition?.latitude}, LNG: ${_currentPosition?.longitude}"
+                    "LAT: 19.175263, LNG: 72.9458786"
                 ),
               ),
-              const SizedBox(
-                height: 15,
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.all(15.0),
+              //   child: TextField(
+              //     keyboardType: TextInputType.name,
+              //     decoration: InputDecoration(labelText: 'Enter data in NFC'),
+              //     controller: myController,
+              //     onEditingComplete: () {
+              //       _writeNfcTag();
+              //       FocusManager.instance.primaryFocus?.unfocus();
+              //     },
+              //   ),
+              // ),
+              // const SizedBox(
+              //   height: 15,
+              // ),
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Center(
