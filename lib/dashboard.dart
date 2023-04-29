@@ -52,7 +52,7 @@ class _DashboardState extends State<Dashboard> {
                       height: 160.0,
                       child: Card(
 
-                        color: Color.fromARGB(255, 209, 208, 208),
+                        color: const Color.fromARGB(255, 209, 208, 208),
                         elevation: 2.0,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0)
@@ -86,7 +86,7 @@ class _DashboardState extends State<Dashboard> {
                       height: 160.0,
                       child: Card(
 
-                        color: Color.fromARGB(255, 209, 208, 208),
+                        color: const Color.fromARGB(255, 209, 208, 208),
                         elevation: 2.0,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0)
@@ -119,7 +119,7 @@ class _DashboardState extends State<Dashboard> {
                       height: 160.0,
                       child: Card(
 
-                        color: Color.fromARGB(255, 209, 208, 208),
+                        color: const Color.fromARGB(255, 209, 208, 208),
                         elevation: 2.0,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0)
@@ -152,7 +152,7 @@ class _DashboardState extends State<Dashboard> {
                       height: 160.0,
                       child: Card(
 
-                        color: Color.fromARGB(255, 209, 208, 208),
+                        color: const Color.fromARGB(255, 209, 208, 208),
                         elevation: 2.0,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0)

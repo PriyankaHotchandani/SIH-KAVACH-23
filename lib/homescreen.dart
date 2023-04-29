@@ -7,6 +7,7 @@ import 'package:nfc_counter/widgets/misc-list-item.dart';
 import 'package:nfc_counter/widgets/ordered-list-item.dart';
 import 'package:nfc_counter/utils/widget-utils.dart';
 import 'package:nfc_counter/all_officers.dart';
+import 'package:nfc_counter/schedule/create-duty.dart';
 
 class Choice {
   const Choice({required this.title, required this.icon, required this.route});
@@ -174,7 +175,9 @@ class HomeScreen extends StatelessWidget {
                           image: "record_video.png",
                           text: "Schedule",
                           callback: () {
-                            WidgetUtils.infoToast("Feature not availiable at this time...");
+                           Navigator.push(context, MaterialPageRoute(builder:(context) {
+                              return CreateDuty();
+                            },));
                           },
                         )
                       ],

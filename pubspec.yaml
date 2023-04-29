@@ -8,6 +8,7 @@ environment:
   sdk: '>=2.18.2 <3.0.0'
 
 dependencies:
+  csc_picker: ^0.2.7
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
