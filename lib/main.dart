@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
+
   final String title;
 
   @override
@@ -66,19 +67,20 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
-             ElevatedButton(
+            ElevatedButton(
               child: const Text('Homepage'),
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder:(context) {
-                  return LoginScreen();
-                },));
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return LoginScreen();
+                  },
+                ));
               },
             ),
             _getNfcWidgets(),
           ],
         ),
       ),
-     
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
@@ -120,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
         //Ios doesnt allow the user to turn of NFC at all,  if its not avalible it means its not build in
         return const Text("Your device doesn't support NFC");
       } else {
-        //Android phones can turn of NFC in the settings  
+        //Android phones can turn of NFC in the settings
         return const Text(
             "Your device doesn't support NFC or it's turned off in the system settings");
       }

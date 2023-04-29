@@ -27,7 +27,7 @@ class Category {
 
 const List<Choice> choices = <Choice>[
   Choice(title: 'ACCOUNT', icon: Icons.account_circle, route: ""),
-  Choice(title: 'REPORT HISTROY', icon: Icons.history, route: ""),
+  Choice(title: 'REPORT HISTORY', icon: Icons.history, route: ""),
   Choice(title: 'SETTING', icon: Icons.settings, route: ""),
   Choice(title: 'FEEDBACK', icon: Icons.feedback, route: ""),
   Choice(title: 'PRIVACY/TERMS', icon: Icons.verified_user, route: ""),
