@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:geocoder/geocoder.dart';
+import 'package:nfc_counter/schedule/google-maps.dart';
 import 'package:nfc_counter/schedule/teamModel.dart';
 import 'dart:async';
 
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 const kGoogleApiKey = "AIzaSyA7Dfm5_owPuczra0Ey8TsE92PDf1-RC8s";
-Map<String, dynamic> officer1 = {"title":"Prashant Mohite","snippet":"Officer ID - A2344\nContact - 9764689923"};
+Map<String, dynamic> officer1 = {"title":"Prashant Mohite","snippet":"Officer ID - A1244\nContact - 9764689923"};
 Map<String, dynamic> officer2 = {"title":"Dilip Shinde","snippet":"Officer ID - H4583\nContact - 94562884892"};
 Map<String, dynamic> officer3 = {"title":"Saurav Shetty","snippet":"Officer ID - A873\nContact - 867287764648"};
 List officer_info = [officer1, officer2, officer3];
 
 List<TeamModel> contacts = [
-     TeamModel("Prashant Mohite", "Officer ID: A2344", false),
+     TeamModel("Prashant Mohite", "Officer ID: A1244", false),
      TeamModel("Dilip Shinde", "Officer ID: H4583", false),
      TeamModel("Saurav Shetty", "Officer ID: A873", false),
   ];
@@ -72,7 +73,9 @@ class _BspAddressmapscreenState extends State<BspAddressmapscreen> {
               icon: const Icon(Icons.arrow_back_ios),
               label: const Text('Save'),
               onPressed: () {
-                getUserLocation();
+                Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => ViewMap()));
+                //getUserLocation();
               },
             ),
             officerListView(),
@@ -117,10 +120,10 @@ class _BspAddressmapscreenState extends State<BspAddressmapscreen> {
       child: GoogleMap(
         mapType: MapType.normal,
         initialCameraPosition:
-            const CameraPosition(target: LatLng(40.712776, -74.005974), zoom: 12),
+            const CameraPosition(target: LatLng(23.762912, 90.427816), zoom: 12),
         onMapCreated: (GoogleMapController controller) {
          _controller.animateCamera(CameraUpdate.newLatLng(
-            const LatLng(56.1725505, 10.1850512),
+            const LatLng(23.762912, 90.427816),
           ),);
         },
         markers: Set<Marker>.of(markers.values),

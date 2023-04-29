@@ -16,6 +16,7 @@ class _GroupSelectState extends State<GroupSelect> {
      TeamModel("Port zone team", "35 officers", false),
      TeamModel("Kalbadevi-Byculla Station", "60 officers", false),
      TeamModel("Goregaon-Malad Eastern Station", "50 officers", false),
+     TeamModel("Testing duty Team","3 officers",false),
   ];
 
   List<TeamModel> selectedContacts = [];
