@@ -12,8 +12,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  geocoder: ^0.2.1
   google_maps_flutter: ^2.2.5
   http: ^0.13.5
+  maps_toolkit: ^2.0.1
   nfc_manager: ^3.2.0
   oktoast: ^3.3.1
 

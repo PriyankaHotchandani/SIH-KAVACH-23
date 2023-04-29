@@ -9,6 +9,7 @@ import 'package:nfc_counter/utils/widget-utils.dart';
 import 'package:nfc_counter/all_officers.dart';
 import 'package:nfc_counter/schedule/create-duty.dart';
 import 'package:nfc_counter/schedule/google-maps.dart';
+import 'package:nfc_counter/schedule/record-initial-location.dart';
 
 class Choice {
   const Choice({required this.title, required this.icon, required this.route});
@@ -206,7 +207,7 @@ class HomeScreen extends StatelessWidget {
                       textLabel: "Emergency Phone Lines",
                       callback: () {
                         Navigator.push(context, MaterialPageRoute(builder:(context) {
-                        return Dashboard();
+                        return RecordLocation();
                       },));
                       },
                     ),
