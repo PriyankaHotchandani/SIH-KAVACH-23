@@ -20,7 +20,8 @@ class Choice {
 }
 
 class Category {
-  const Category({required this.title, required this.description, required this.color});
+  const Category(
+      {required this.title, required this.description, required this.color});
 
   final String title;
   final String description;
@@ -36,6 +37,7 @@ const List<Choice> choices = <Choice>[
 ];
 
 const List<Category> allCategories = <Category>[];
+
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -51,7 +53,7 @@ class HomeScreen extends StatelessWidget {
           child: Image.asset("assets/images/citizen_app_logo.png"),
         ),
         backgroundColor: Colors.grey[50],
-        brightness: Brightness.light,
+        // brightness: Brightness.light,
         elevation: 0,
         actions: <Widget>[
           PopupMenuButton<Choice>(
@@ -70,15 +72,18 @@ class HomeScreen extends StatelessWidget {
                   child: Row(
                     children: <Widget>[
                       Padding(
-                        padding: const EdgeInsets.only(top: 2.0, bottom: 2.0, left: 0.0, right: 8.0),
+                        padding: const EdgeInsets.only(
+                            top: 2.0, bottom: 2.0, left: 0.0, right: 8.0),
                         child: Icon(
                           choice.icon,
                           color: Colors.grey[700],
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 2.0, bottom: 2.0, left: 2.0, right: 0.0),
-                        child: Text(choice.title, style: TextStyle(color: Colors.grey[700])),
+                        padding: const EdgeInsets.only(
+                            top: 2.0, bottom: 2.0, left: 2.0, right: 0.0),
+                        child: Text(choice.title,
+                            style: TextStyle(color: Colors.grey[700])),
                       ),
                     ],
                   ),
@@ -105,9 +110,11 @@ class HomeScreen extends StatelessWidget {
                     ),
                     Colors.red,
                     () {
-                      Navigator.push(context, MaterialPageRoute(builder:(context) {
-                        return Dashboard();
-                      },));
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return Dashboard();
+                        },
+                      ));
                     },
                   ),
                 ),
@@ -120,9 +127,11 @@ class HomeScreen extends StatelessWidget {
                     ),
                     Colors.indigo,
                     () {
-                      Navigator.push(context, MaterialPageRoute(builder:(context) {
-                        return Dashboard();
-                      },));
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return Dashboard();
+                        },
+                      ));
                     },
                   ),
                 ),
@@ -130,7 +139,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top:2, left:8.0, right: 8),
+            padding: const EdgeInsets.only(top: 2, left: 8.0, right: 8),
             child: Card(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16.0),
@@ -159,30 +168,35 @@ class HomeScreen extends StatelessWidget {
                     Row(
                       children: <Widget>[
                         QuickReportItem(
-                          image: "record_audio_1.png",
+                          image: "policeman.png", // originally record_audio_1
                           text: "Officers",
                           callback: () {
-                            Navigator.push(context, MaterialPageRoute(builder:(context) {
-                              return AllOfficers();
-                            },));
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (context) {
+                                return AllOfficers();
+                              },
+                            ));
                           },
                         ),
                         QuickReportItem(
-                            image: "take_photo.png",
+                            image: "danger.png", //originally take_photo
                             text: "Alerts",
                             callback: () {
-                              Navigator.push(context, MaterialPageRoute(builder:(context) {
-                              return ViewMap();
-                            },));
-                            }
-                            ),
+                              Navigator.push(context, MaterialPageRoute(
+                                builder: (context) {
+                                  return ViewMap();
+                                },
+                              ));
+                            }),
                         QuickReportItem(
-                          image: "record_video.png",
+                          image: "calendar.png", // originally record_video
                           text: "Schedule",
                           callback: () {
-                           Navigator.push(context, MaterialPageRoute(builder:(context) {
-                              return CreateDuty();
-                            },));
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (context) {
+                                return CreateDuty();
+                              },
+                            ));
                           },
                         )
                       ],
@@ -193,7 +207,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top:2, left:8.0, right: 8),
+            padding: const EdgeInsets.only(top: 2, left: 8.0, right: 8),
             child: Card(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16.0),
@@ -216,29 +230,36 @@ class HomeScreen extends StatelessWidget {
                       imageAsset: "locate_stations.png",
                       textLabel: "Locate Nearest Police Stations",
                       callback: () {
-                        Navigator.push(context, MaterialPageRoute(builder:(context) {
-                        return Dashboard();
-                      },));
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return Dashboard();
+                          },
+                        ));
                       },
                     ),
                     Divider(),
                     OrderedListItem(
-                      imageAsset: "most_wanted.png",
+                      imageAsset: "past.png", // originally most_wanted
                       textLabel: "Past Bandobast duty details",
                       callback: () {
-                        Navigator.push(context, MaterialPageRoute(builder:(context) {
-                          return Dashboard();
-                        },));
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return Dashboard();
+                          },
+                        ));
                       },
                     ),
                     Divider(),
                     OrderedListItem(
-                      imageAsset: "missing_items.png",
+                      imageAsset:
+                          "return-to-the-past.png", //originally missing_items
                       textLabel: "Previous Alerts",
                       callback: () {
-                        Navigator.push(context, MaterialPageRoute(builder:(context) {
-                          return Dashboard();
-                        },));
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return Dashboard();
+                          },
+                        ));
                       },
                     ),
                     Divider(),
@@ -246,9 +267,11 @@ class HomeScreen extends StatelessWidget {
                       imageAsset: "notices.png",
                       textLabel: "Notifications & Public Notices",
                       callback: () {
-                        Navigator.push(context, MaterialPageRoute(builder:(context) {
-                          return Dashboard();
-                        },));
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return Dashboard();
+                          },
+                        ));
                       },
                     )
                   ],
@@ -259,7 +282,7 @@ class HomeScreen extends StatelessWidget {
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Padding(
-              padding: const EdgeInsets.only(top:2, left:8.0, right: 8),
+              padding: const EdgeInsets.only(top: 2, left: 8.0, right: 8),
               child: Row(
                 children: allCategories.map((value) {
                   return MiscListItem(
@@ -268,9 +291,11 @@ class HomeScreen extends StatelessWidget {
                     actionButtonColor: value.color,
                     actionLabel: value.title,
                     onclick: () {
-                      Navigator.push(context, MaterialPageRoute(builder:(context) {
-                        return Dashboard();
-                      },));
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return Dashboard();
+                        },
+                      ));
                     },
                   );
                 }).toList(),
@@ -293,9 +318,11 @@ class HomeScreen extends StatelessWidget {
                   GestureDetector(
                     child: new Text('Take a picture'),
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder:(context) {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
                           return Dashboard();
-                        },));
+                        },
+                      ));
                     },
                   ),
                   Padding(
@@ -304,9 +331,11 @@ class HomeScreen extends StatelessWidget {
                   GestureDetector(
                     child: new Text('Select from gallery'),
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder:(context) {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
                           return Dashboard();
-                        },));
+                        },
+                      ));
                     },
                   ),
                 ],
@@ -316,7 +345,8 @@ class HomeScreen extends StatelessWidget {
         });
   }
 
-  Widget _buildHeaderWidgets(String text, Image image, Color color, VoidCallback onclick) {
+  Widget _buildHeaderWidgets(
+      String text, Image image, Color color, VoidCallback onclick) {
     return Card(
       color: color,
       shape: RoundedRectangleBorder(
