@@ -87,10 +87,10 @@ class _DashboardState extends State<Dashboard> {
                 if (wellKnownRecord.payload.first == 0x02) {
                   //Now we know the encoding is UTF8 and we can skip the first byte
                   final languageCodeAndContentBytes =
-                  wellKnownRecord.payload.skip(1).toList();
+                      wellKnownRecord.payload.skip(1).toList();
                   //Note that the language code can be encoded in ASCI, if you need it be carfully with the endoding
                   final languageCodeAndContentText =
-                  utf8.decode(languageCodeAndContentBytes);
+                      utf8.decode(languageCodeAndContentBytes);
                   //Cutting of the language code
                   final payload = languageCodeAndContentText.substring(2);
                   //Parsing the content to int
@@ -355,6 +355,7 @@ class _DashboardState extends State<Dashboard> {
       ),
     );
   }
+
   @override
   void dispose() {
     try {
